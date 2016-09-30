@@ -1,0 +1,49 @@
+<div class="wrapper">
+    <div class="container">
+      <div class="col-lg-5 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 main">
+      <div class="col-sm-6 col-sm-offset-2" style="padding-top:20px;">
+          <%= render partial: "shared/success", locals:{msg:@msg} %>
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-4">
+          <h3>Login</h3>
+        </div>
+        <%= form_for :user, :url=>{:controller=>'public',:action=>'authenticate'} do |f|%>
+          
+          <div class="col-xs-12 form">
+            <div class="col-sm-2 col-xs-1">
+              <i class="fa fa-user fa-2x"></i>
+            </div>
+            <div class="col-sm-9 col-xs-10">
+              <%= f.text_field("email",:class=>'form-control',placeholder:"Email",:required => true,:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}') %>(ex. ab@xyz.pqr)
+            </div>
+          </div>
+          <div class="col-sm-12 col-xs-12" style="padding-top:15px;">
+            <div class="col-sm-2 col-xs-1">
+              <i class="fa fa-key fa-2x"></i>
+            </div>
+            <div class="col-sm-9 col-xs-10">
+              <%= f.password_field("password",:class=>'form-control',placeholder:"Password") %>
+            </div>
+          </div>
+          <div class="col-sm-12 col-xs-12" style="padding-top:15px;">
+            <div class="col-sm-2 col-xs-1">
+            </div>
+            <div class="col-sm-9 col-xs-10">
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </div>
+          <% end %>
+      </div>
+        <div class="col-sm-12 col-xs-12">
+              <div class="col-sm-5 col-sm-offset-2 col-xs-4 col-xs-offset-1">
+                    <!-- <label class="checkbox">
+                        <input type="checkbox" value="remember-me">Remember Me
+                    </label>  -->   
+          </div>
+                <div class="col-sm-5 col-xs-6" style="padding-top:10px;">
+                    <a href="#" style="text-decoration:none;">Forgot password?</a>
+                </div> 
+        </div>        
+    </div>
+  </div>
+</div>

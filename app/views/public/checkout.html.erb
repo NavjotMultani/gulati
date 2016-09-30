@@ -1,0 +1,119 @@
+<script>
+
+     $(document).ready(function(){
+     $(".check").click(function(){
+     $(".sh").toggle(500);
+     });
+     });
+     </script>
+<div class="wrapper">
+      	  <div class="container">
+      	  	  <div class="row">
+      	  	  	  <div class="col-xs-12">
+      	  	  	   <%= render partial: "shared/success", locals:{msg:@msg}%>
+      	  	  	    <%= render partial:'shared/errors',locals:{object:@object}%> 
+      	  	  	  	  <div class="col-md-8 col-sm-7 col-xs-12">
+      	  	  	  	  	   <%= form_for :ordermaster,:url=>{:controller=>'public',:action=>'saveOrder'} do |f| %>
+      	  	  	  	  	  <div class="row">
+      	  	  	  	  	  	  <div class="col-xs-12 check">Checkout</div>
+      	  	  	  	  	  </div>
+      	  	  	  	  	  <div class="row">
+      	  	  	  	  	      <div class="col-xs-12">
+	      	  	  	  	  	  	  <div class="col-sm-6">
+	      	  	  	  	  	  	      <div class="row maintext">BILLING</div>
+	      	  	  	  	  	  	      <div class="row">
+	      	  	  	  	  	  	      	 <input type="checkbox" class="check" checked="">
+	      	  	  	  	  	  	      </div>
+	      	  	  	  	  	  	      <div class="row">
+	      	  	  	  	  	  	      	  <div class="col-sm-12">
+	      	  	  	  	  	  	      	  	  <div class="row textinput">NAME</div>
+	      	  	  	  	  	  	      	  </div> 
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="bname" name="bname" required = "required"></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	                      <div class="col-sm-12">
+	      	  	  	  	  	  	      	  	  <div class="row textinput">ADDRESS</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="baddress" name="baddress" required = "required"></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	
+	      	  	  	  	  	  	      	  
+	      	  	  	  	  	  	      	  <div class="col-sm-12">
+	      	  	  	  	  	  	      	  	  <div class="row textinput">PINCODE</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="bpincode" name="bpincode" required = "required"></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-12">
+	      	  	  	  	  	  	      	      <div class="row textinput">PHONE NUMBER</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="bphone" name="bphone" required = "required"></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      </div>
+	      	  	  	  	  	  	  </div>
+	      	  	  	  	  	  	  <div class="col-sm-6 sh">
+	      	  	  	  	  	  	      <div class="row maintext">SHIPPING</div>
+	      	  	  	  	  	  	      <div class="row maintext"></div>
+	      	  	  	  	  	  	      <div class="row">
+	      	  	  	  	  	  	      	  <div class="col-sm-12">
+	      	  	  	  	  	  	      	  	  <div class="row textinput">NAME</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="sname" name="sname" ></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	                      <div class="col-sm-12">
+	      	  	  	  	  	  	      	  	  <div class="row textinput">ADDRESS</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="saddress" name="saddress" ></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  
+	      	  	  	  	  	  	      	  <div class="col-sm-12">
+	      	  	  	  	  	  	      	  	  <div class="row textinput">PINCODE</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id="spincode" name="spincode" ></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-12">
+	      	  	  	  	  	  	      	      <div class="row textinput">PHONE NUMBER</div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      	  <div class="col-sm-11">
+	      	  	  	  	  	  	      	  	  <div class="row"><input type="text" class="form-control" id = "sphone" name= "sphone" ></div>
+	      	  	  	  	  	  	      	  </div>
+	      	  	  	  	  	  	      </div>
+	      	  	  	  	  	  	  </div>
+      	  	  	  	  	  	  </div>
+      	  	  	  	  	  </div>
+      	  	  	  	  	   <div class="row mode">
+      	  	  	  	  	  	  <div class="col-xs-12 maintext">Mode Of Payment</div>
+      	  	  	  	  	  </div>
+      	  	  	  	  	  <div class="row modes">
+      	  	  	  	  	  	  <div class="col-xs-12">
+      	  	  	  	  	  	  	  <label class="radio-inline">
+                                        <input type="radio" name="mop" value="cod" id="mop">Cash On Delivery
+                                  </label>
+      	  	  	  	  	  	  </div>
+      	  	  	  	  	  </div>
+      	  	  	  	  	  <div class="row modes">
+      	  	  	  	  	  	  <div class="col-xs-12">
+      	  	  	  	  	  	  	  <label class="radio-inline">
+                                        <input type="radio" name="mop" value="credit card" id="mop">Credit Card
+                                  </label>
+      	  	  	  	  	  	  </div>
+      	  	  	  	  	  </div>
+      	  	  	  	  	  <div class="row modes">
+      	  	  	  	  	  	  <div class="col-xs-12">
+      	  	  	  	  	  	      <button class="btn  btn-md"><span class="items">PROCEED</span></button> 
+      	  	  	  	  	  	  </div>
+      	  	  	  	  	  </div>
+      	  	  	  	  	  <% end %>
+      	  	  	  	  </div>
+      	  	  	  	  <!-- left part ends here-->
+      	  	  	  	 <%= render partial:'shared/receipt',locals:{object:@total} %>
+                 </div> 
+      	  	  	  </div>
+      	  	  </div>
+      	  </div>
+      </div>

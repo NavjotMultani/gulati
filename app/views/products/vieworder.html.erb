@@ -1,0 +1,107 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <% @total_tax = 0 %>
+      <div class="col-sm-9 col-xs-12" style="padding:0px;">               
+        <div class="col-xs-12 wishlistt">Change Order Status</div>                 
+          <div class="col-md-10 col-sm-10 col-xs-12 left">
+          <div class="col-xs-12">
+            <%= form_for :ordermaster ,:url=>{:action=>"updateOrdermaster",:id=>params[:id]} do |f|%>
+              <div class="row">
+                <div class="col-xs-12 main">
+                  <div class="row aldetail fulldetail">
+                    <div class="col-xs-2">Img</div>
+                    <div class="col-xs-2">Name</div> 
+                    <div class="col-xs-2">Price</div> 
+                    <div class="col-sm-2 col-xs-2">Quantity</div>
+                    <div class="col-md-2 col-sm-1 col-xs-1">Total</div>
+                    <div class="col-md-2 col-sm-3 col-xs-3">Change Action</div> 
+                  </div>
+                <% @orderdetail.each do |order| %>  
+                  <div class="row ordetail fulldetail">
+                    <div class="col-sm-2 col-xs-2">
+                      <%= f.hidden_field("id",:value=>order.ordermaster_id) %> 
+                      <%= image_tag("/uploads/"+ order.product.photo1,:size=>'50x40') %>    
+                    </div>
+                    <div class="col-sm-2 col-xs-2 dpqt"><%= order.product.product_name %></div> 
+                    <div class="col-sm-2 col-xs-2 dpqt"><%= order.cost %></div> 
+                    <div class="col-sm-2 col-xs-2 dpqt"><%= order.quantity %></div>
+                    <div class="col-md-2 col-sm-1 col-xs-1 dpqt"><%= order.row_total %></div>
+                    <div class="col-md-2 col-sm-3 col-xs-3 dpqt">
+                    
+                    </div>  
+                  </div>
+                  <% end %>   
+                  <div class="row ordersub fulldetail">
+                  <% if Tax.exists? %>
+                  <% @tax.each do |tax| %>
+                  <% @taxx =tax.tax.to_d %>
+                    <div class="col-xs-8">
+                      <span class="p">Tax</span>
+                    </div>
+                    <div class="col-xs-4"><%= @taxx %> %</div>
+                  </div>
+                  <% end %>
+                    <% else %>
+                    <div class="col-xs-4"><%= @total_tax %> %</div>
+                  <% end %>                         
+                  <div class="row ordersub fulldetail">
+                    <div class="col-sm-8 col-xs-8">
+                      <span class="p">Order subtotal</span>
+                    </div>
+                    <div class="col-sm-4 col-xs-4"><% @om.each do |om| %>
+                      <%= @total=om.total_cost %>
+                      <% end %>
+                    </div>
+                  </div>
+                  
+                  <div class="row ordersub ordersubb fulldetail">            
+                    <% @shipping.each do |shipping| %>
+                    <% @billing.each do |billing| %>
+                        <div class="col-xs-7">
+                          <span class="p">Shipping address</span>
+                        </div>
+                        <div class="col-xs-5">Billing address</div>
+                      </div>
+                      <div class="row ordersub ordersubb ad fulldetail">
+                        <div class="col-xs-7">
+                          <span class="p"><%= shipping.name%></span>
+                        </div>
+                        <div class="col-xs-5"><%= billing.name%></div>
+                      </div>
+                      <div class="row ordersub ordersubb ad fulldetail">
+                        <div class="col-xs-7">
+                          <span class="p"><%=shipping.address%></span>
+                        </div>
+                        <div class="col-xs-5"><%= billing.address%></div>
+                      </div>
+                      <div class="row ordersub ordersubb ad fulldetail">
+                        <div class="col-xs-7">
+                          <span class="p"><%= shipping.pincode%></span>
+                        </div>
+                        <div class="col-xs-5"><%= billing.pincode%> </div>
+                      </div>
+                      <div class="row ordersub ordersubb ad fulldetail">
+                        <div class="col-xs-7">
+                          <span class="p"><%= shipping.phone%></span>
+                        </div>
+                        <div class="col-xs-5"><%= billing.phone%> </div>
+                      </div>
+                    <% end %>
+                    <% end %>  
+                                      <div class="row ordersub ordersubb ad fulldetail">
+                                     <div class="col-xs-7">
+                                        <%= f.select(:status,[['Being Prepared','Being Prepared'],['On Hold','On Hold'],['Received','Received'],['Cancelled','Cancelled']],{:multiple=>true,:size=>4} ) %>
+                                     </div>
+                                     <div class="col-xs-5"> <%= submit_tag('Save status',:class=>'btn btn-primary') %>    </div>
+                                 </div>
+                                 
+            <% end %>
+          </div> 
+        </div>
+      </div>
+      </div>
+    </div> 
+  </div>
+</div>
+                 

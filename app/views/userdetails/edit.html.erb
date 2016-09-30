@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(input).prev('.photo')
+                    .attr('src', e.target.result)
+                    .width(50)
+                    .height(50)
+                    ;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<div class="row">
+     <div class="col-xs-12 form_box">
+            <%= form_for :userdetail ,:url=>{:action=>"updateUser"} do |f|%>
+                    <input type="hidden" value="<%= @userdetail.id %>" name="id">   
+            <%= render partial: "shared/errors", locals: {object: @object} %>
+                <%= render partial: "form", locals: {f: f} %>       
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                            <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+                                <div class="col-lg-4 col-md-2 col-sm-2">
+                                        <h4>Profile Photo</h4>
+                                </div>
+                                <% if @userdetail.profile_pic %>
+                                <input type="hidden" value= '<%= @userdetail.profile_pic %>' name="userdetail[profile]" >
+                                <div class="col-lg-4 col-md-5 col-sm-6">
+                                    <%= image_tag("/uploads/"+@userdetail.profile_pic,:size=>'50x50',:class=>'photo') %>
+                                <% end %>    
+                                <%= f.file_field("profile_pic",:onchange =>"readURL(this);") %>
+                                </div>
+                        </div>
+                        
+                        <div class="col-lg-1 col-lg-offset-6 col-md-1 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-3">
+                       <%= f.hidden_field("updated_by",:value=>session[:user_id]) %>
+                            <%= submit_tag('Save',:class=>'btn btn-primary') %>
+                        <%= render partial: "shared/success", locals: {msg: @msg} %>
+                         
+                        </div>
+                    </div>
+                <%end%>    
+                </div>
+</div>

@@ -1,0 +1,83 @@
+<% if session[:totalCost] %>
+  <% @total = session[:totalCost] %>
+  <% @total_tax = 0 %>
+    <div class="col-lg-4 col-sm-12  rightt">
+        <div class="col-lg-10 col-lg-offset-1 col-sm-6 col-xs-12 rightdes">
+            <div class="col-sm-10 col-sm-offset-1 coupon">
+                <strong><%= link_to("ORDER SUMMARY",{:action=>'orderhistory'},{:style=>'text-decoration:none;color:#000;',:class=>'v'}) %></strong>
+            </div>
+        </div> 
+    <div class="col-lg-10 col-lg-offset-1 col-sm-6 col-xs-12 rightdes"> 
+        <div class="col-sm-12 col-xs-12 price">
+            <div class="col-sm-5 col-xs-8">                            
+                <strong class="pricetext">Total</strong>
+            </div>
+            <div class="col-sm-5 col-sm-offset-2 col-xs-4 rs">
+                <strong class="pricetext"><i class="fa fa-inr"></i> <%= @total %></strong>
+            </div>                               
+        </div>  
+        <div class="row">
+           <div class="col-sm-12 col-xs-12">
+                <div class="col-lg-10 col-lg-offset-1 col-sm-9 col-sm-offset-1 place"> 
+                    <%= submit_tag("PLACE ORDER",{:class=>"btn btn-lg"}) %>        
+                </div>
+            </div>
+        </div>    
+        <div class="col-sm-11 col-sm-offset-1 col-xs-12 oorder">
+            
+        </div>
+        <div class="col-sm-12 phtt">
+            <div class="col-sm-6 col-xs-6">
+                Price
+            </div>
+            <div class="col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2 rs11">
+                <i class="fa fa-inr"></i> <%= @total %>
+            </div>
+        </div>
+        <div class="col-sm-12 phtt">
+            <div class="col-sm-6 col-xs-7">
+                Handling charges
+            </div>
+            <div class="col-sm-3 col-sm-offset-2 col-xs-3 col-xs-offset-2">
+                <i class="fa fa-inr"></i> <%= @hc %>
+            </div>
+        </div>
+        <% if @tax.exists? %>
+        
+        <% @tax.each do |tax| %>
+        <% @taxx = tax.tax.to_d %>
+        <% @t1 = @taxx/100 %>
+        <% @total_tax = @t1 * @total %>
+        <% session[:total_tax] = @total_tax %>
+        <div class="col-sm-12 col-xs-12 phtt" style="border-bottom:1px solid rgba(0,0,0,0.3);">
+            <div class="col-sm-6 col-xs-6">
+                Taxes
+            </div>
+            <div class="col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2 ">
+                <i class="fa fa-inr"></i> <%= @taxx %>%
+            </div>
+        </div>
+        <% end %>
+        <% else %>
+            <div class="col-sm-12 col-xs-12 phtt" style="border-bottom:1px solid rgba(0,0,0,0.3);">
+            <div class="col-sm-6 col-xs-6">
+                Taxes
+            </div>
+            <div class="col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2 ">
+                <i class="fa fa-inr"></i> <%= @total_tax %>%
+            </div>
+        </div>
+        <% end %>
+            <div class="col-sm-12 col-xs-12 phtt">
+            <div class="col-sm-6 col-xs-6">
+                Total
+            </div>
+            <div class="col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2 rs11">
+                <i class="fa fa-inr"></i>
+                <% @finalTotal = @total  + @total_tax %>
+                <%= @finalTotal.round(2) %>
+                <% session[:finalTotal] = @finalTotal %>
+            </div>
+        </div>      
+    </div>    
+<% end %>

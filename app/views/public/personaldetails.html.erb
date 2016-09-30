@@ -1,0 +1,31 @@
+<div class="page-wrapper">
+    <div class="container">
+        <div class="col-md-11 col-md-offset-1 col-xs-12 top">
+            <div class="col-lg-6 col-md-7 col-sm-8 col-xs-12 left">
+                     <div class="row">
+            <%= form_for :userdetail ,:url=>{:controller=>"public",:action=>"addUserdetail"} do |f|%>
+            <%= render partial: "shared/errors", locals: {object: @object} %>
+            <%= render partial: "shared/detailform", locals: {f: f} %>
+            <div class="col-xs-12 last">
+                                    <div class="col-xs-12" style="margin-top:5px;">Profile pic:</div>
+                                   <div class="col-xs-12">
+                                        <%= f.file_field("profile_pic") %>
+                                    </div>
+                               </div>
+            
+                         <div class="col-xs-10 col-xs-offset-1 last">
+                             By Signing up you will agree Privacy Policy and Terms of Conditions
+                         </div>
+                         <div class="col-xs-11 col-xs-offset-5">
+                            <%= f.hidden_field("created_by",:value=>session[:user_id]) %>
+                            <%= submit_tag('Save',:class=>'btn btn-primary') %>
+
+                            <%= render partial: "shared/success", locals: {msg: @msg} %>
+                                
+                         </div>
+            <% end %>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<% if params[:id] %>
+    <input type="hidden" name="userdetail[user_id]" value="<%= params[:id] %>">
+<% else %>
+    <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+            <div class="col-lg-4 col-md-2 col-sm-2">
+                    <h4>Email</h4>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+
+                        <%= f.select("user_id", @users.collect {|u| [u.email, u.id ] }, { include_blank: "Select Email" },:class=>'form-control',:required=>true)%>
+            </div>
+    </div>
+<% end %>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Username</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+            <%= f.text_field("name",:placeholder=>'Enter Username' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Contact Number</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("phone",:placeholder=>'Enter Contact Number' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Address</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_area("address",:placeholder=>'Enter Address' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>   
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Pincode</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("pincode",:placeholder=>'Enter Pincode' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>           

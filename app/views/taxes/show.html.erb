@@ -1,0 +1,23 @@
+<div class="row">
+            <div class="col-lg-6 col-lg-offset-3 col-md-1 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-3">
+  
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        
+        <th>Tax On Sale</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tax.each do |t| %>
+      <tr>
+
+        <td><%= t.tax %></td>
+        <td><%= link_to("",{:action => 'edit',:id => t.id},:class=>'fa fa-edit fa-2x')%></td></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  
+</div>  

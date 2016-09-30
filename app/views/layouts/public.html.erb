@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= @page_title || "Index"%></title>
+     <%= javascript_include_tag 'jquery','slider', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+    <%= stylesheet_link_tag 'font-awesome.min','index','brands','p','cart','or','odetail','check1', 'wish',media:'all', 'data-turbolinks-track' => true %> 
+    <script>
+    $(document).ready(function(){
+    $("li.main").click(function(){
+    $("li.main").not(this).find(".menu1").hide(300);
+    $(this).find(".menu1").toggle(300);
+    });
+    $(".bar_container").click(function(){
+    $(".nav").slideToggle(800);
+    });
+    });
+   
+    </script>
+</head>
+<body>
+     <div class="page-wrapper">
+         <div class="container-fluid">
+             <div class="row" style="background:#3b5998">
+                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                     <div class="col-xs-3 fa-2x" style="color:#fff;">
+                         <% if session[:user_id] %>
+                          <% if @details %>
+                            <% if @details.profile_pic %>
+                              <%= image_tag("/uploads/"+@details.profile_pic,:size=>'30x30') %>
+                            <% else %>
+                              <i class="fa fa-user"></i>
+                            <% end %>
+                            <% else %>
+                              <i class="fa fa-user"></i>
+                          <% end %>
+                         <% else %>
+                         <i class="fa fa-user"></i>
+                         <% end %>
+                     </div>
+                     <div class="col-xs-9">
+                        <% if session[:email] %>
+                        <h5 style="padding-top:4px;color:#fff;">
+                            <%= session[:email] %>
+                        </h5>
+                        <% else %>
+                        <h5 style="padding-top:4px;color:#fff;">My Account</h5>
+                        <% end %>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-1">
+                     <h5 style="font-style: italic;font-family:Times New Roman;color:#fff;">Free Shipping All Over The World </h5>
+                 </div>
+                 <div class="col-lg-2 col-lg-offset-2 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-4">
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#fff;">
+                                 <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                 <i class="fa fa-facebook fa-stack-1x"></i>
+                         </span>
+                     </div>
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#fff;">
+                                 <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                 <i class="fa fa-google fa-stack-1x"></i>
+                         </span>
+                     </div>
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#fff;">
+                                 <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                 <i class="fa fa-twitter fa-stack-1x"></i>
+                         </span>
+                     </div>
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#fff;">
+                                 <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                 <i class="fa fa-linkedin fa-stack-1x"></i>
+                         </span>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-------------------------------------------------------------------------------------------------->
+         <div class="container-fluid">
+             <div class="row" style="padding:10px 0px;">
+                 <div class=" col-sm-2 col-xs-2">
+                       <a href="/public"><%= image_tag("logo.png",  :class => 'img-responsive')%></a>
+                 </div>
+             <div class="col-md-7 col-sm-6 col-sm-offset-0 col-xs-10 search" style="padding-top:25px;">
+                 <form class="navbar-form" role="search" action="/public/search" style="width:100%!important">
+                <div class="input-group" style="width:100%!important;padding-left:100px;">
+                  <input type="text" class="form-control" name="search" placeholder="Search" style="width:100%!important;" required="true">
+                    <span class="input-group-btn">
+                          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                         </span>
+                    </div>
+                  </form>
+             </div>
+                 <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-12 social" style="padding-top:35px;">
+                          <div class="col-sm-3 col-xs-12 so">
+                          <a href="/public/cartview">
+                          <button class="btn btn-sm" style="background:#3b5998;color:#fff;"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items">
+                          <%= session[:cart_size] ? session[:cart_size].to_s + "" : "0" %></span></button></a>
+                          </div>
+                          <% if session[:email] %>
+                          <div class="col-sm-4 col-xs-12 so">
+                          <a href="/public/logout">
+                          <button class="btn btn-sm" style="background:#3b5998;color:#fff;"><span class="glyphicon glyphicon-user"></span> <span class="items">
+                            Logout</span></button>
+                            </a>
+                          </div>
+                          <% else %>
+                          <div class="col-sm-4 col-xs-12 so">
+                          <a href="/public/login" style="color:#fff;text-decoration:none;">
+                          <button class="btn btn-sm" style="background:#3b5998;color:#fff;"><span class="glyphicon glyphicon-user"></span> <span class="items">
+                            Login</span></button>
+                            </a>
+                          </div>
+                          <% end %>
+                           <% if session[:email] %>
+                            <% if @details %>
+                              <div class="col-sm-4 col-xs-12 so">
+                              <%= link_to '<button class="btn btn-sm" style="background:#3b5998;color:#fff;">View Profile</button>'.html_safe,:id=>@details.id,:controller=>'public',:action=>'editpdetail' %>
+                              
+                              </div>
+                            <% else %>
+                              <div class="col-sm-4 col-xs-12 so">
+                              <a href="/public/personaldetails">
+                              <button class="btn btn-sm" style="background:#3b5998;color:#fff;"><span class="glyphicon glyphicon-user"></span> <span class="items">View Profile</span></button>
+                              </a>
+                              </div>
+                            <% end %>  
+                          <% else %>
+                            <div class="col-sm-4 col-xs-12 so">
+                            <a href="/public/signup">
+                            <button class="btn btn-sm" style="background:#3b5998;color:#fff;"><span class="glyphicon glyphicon-user"></span> <span class="items">SignUp</span></button>
+                            </a>
+                            </div>
+                          <% end %> 
+            </div>
+             </div>
+         </div>
+         <!-------------------------------------------------------------------------------------------------->
+         <div class="container-fluid" style="padding:0px;">
+           <div class=" bar_container">
+                <div class="bar one"></div>
+                <div class="bar two"></div>
+                <div class="bar three"></div>
+           </div>
+            <div class="col-sm-12 col-sm-offset-0 col-xs-3 col-xs-offset-5 nav" style="cursor:pointer;">
+                   <span>
+                    <ul>
+                    <% @maincategory.each do |maincategory| %>
+                       <li class="main"><%= maincategory.main_category.capitalize %>
+                        <% if maincategory.category %>
+                          <div class="menu">
+                              <div class="menu1">
+                                  <ul>
+                                    <% if maincategory.category %>
+                                      <% @category = Category.where("maincategory_id = #{maincategory.id} and is_active = '1'")%>
+                                      <% @category.each do |category| %>
+                                      <li><h5 style="border-bottom:1px solid rgba(0,0,0,0.3);"><%= category.category.capitalize %></h5>
+                                        <% if category.subcategory %>
+                                        <% @subcategory = Subcategory.where("category_id = #{category.id} and is_active = '1'")%>
+                                          <% @subcategory.each do |subcategory| %>                                      
+                                          <ul>                                                                        
+                                              <li><%= link_to(subcategory.sub_category.capitalize,{:controller=>'public',:action=>'searchProducts',:id=>subcategory.id},style:'text-decoration:none;color:#fff;') %>                           </li>
+                                          </ul>
+                                         <% end %>
+                                         <% end %> 
+                                      </li>
+                                      <% end %>  
+                                    <% end %>    
+                                      
+                                  </ul>
+                              </div>
+                          </div>
+                        <% end %>
+                       </li>
+                    <% end %>   
+                    </ul>       
+                  </span> 
+                </div>
+           </div>
+          <%= yield %>
+         <!---------------------------------------------------------------------------------->
+         <div class="container-fluid b" style="background:#eee;">
+            <div class="row" style="margin-top:0px;">
+             <div class="col-xs-12" style="padding:0;">
+                 <div class="col-md-2 col-sm-3">
+                     <div class="col-xs-12 mainheading">ABOUT US</div>
+                     <div class="col-xs-12 addtext">Nugen computer & It Services 3rd Floor, Dlf galleria Opp Friends Bakery , jalandhar</div>
+                     <div class="col-sm-12 addtext">Telephone <br> 0987654321</div>
+                     <div class="col-sm-12 addtext">Email<br> nugenrocks@gmail.com</div>
+                 </div>
+                 <div class="col-md-2 col-sm-3">
+                     <div class="col-xs-12 mainheading">COMPANY</div>
+                     <div class="col-xs-12 addtext">Home</div>
+                     <div class="col-xs-12 addtext">About</div>
+                     <div class="col-xs-12 addtext">Shop</div>
+                     <div class="col-xs-12 addtext">Privacy Policy</div>
+                     <div class="col-xs-12 addtext">Delivery Info</div>
+                     <div class="col-xs-12 addtext">Order Tracking</div>
+                 </div>
+                 <div class="col-md-2 col-sm-3">
+                     <div class="col-xs-12 mainheading">INFORMATION</div>
+                     <div class="col-xs-12 addtext">Payment</div>
+                     <div class="col-xs-12 addtext">Shipping</div>
+                     <div class="col-xs-12 addtext">Checkout</div>
+                     <div class="col-xs-12 addtext">Discounts</div>
+                     <div class="col-xs-12 addtext">Gift Cards</div>
+                     <div class="col-xs-12 addtext">Return Products</div>
+                 </div>
+                 <div class="col-md-2 col-sm-3 s" style="margin-top:15px;">
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#3b5998;">
+                               <i class="fa fa-circle-thin fa-stack-2x"></i>
+                               <i class="fa fa-facebook fa-stack-1x"></i>
+                        </span>
+                     </div>
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#3b5998;">
+                               <i class="fa fa-circle-thin fa-stack-2x"></i>
+                               <i class="fa fa-google fa-stack-1x"></i>
+                       </span>
+                     </div>
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#3b5998;">
+                               <i class="fa fa-circle-thin fa-stack-2x"></i>
+                               <i class="fa fa-twitter fa-stack-1x"></i>
+                       </span>
+                     </div>
+                     <div class="col-xs-3">
+                         <span class="fa-stack fa-lg" style="color:#3b5998;">
+                               <i class="fa fa-circle-thin fa-stack-2x"></i>
+                               <i class="fa fa-linkedin fa-stack-1x"></i>
+                       </span>
+                     </div>
+                 </div>
+                 <div class="col-md-4 col-sm-3 s">
+                     <div class="col-xs-12 mainheading">JOIN OUR MAILING LIST!</div>
+                     <div class="col-xs-12 addtext">
+                        <input type="text" placeholder="Enter your email" class="form-control">
+                     </div>
+                     <div class="col-xs-12 mainheading">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">Send</button>
+                     </div>
+                 </div>
+             </div>
+            </div>
+         </div>
+     </div>
+</body>
+</html>

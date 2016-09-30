@@ -1,0 +1,54 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="col-lg-3 col-lg-offset-0 col-md-5 col-sm-5 col-xs-12" style="background:#3498db;margin-top:35px;">
+    <div class="col-lg-4 col-md-3">
+      <i class="fa fa-user fa-5x" style="color:#fff;opacity:0.1;padding-top:40px;"></i>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-3 col-md-offset-4" style="padding-top:20px;color:#fff;">
+      <h5 style="font-size:16px;">Users <%=session[:count_user]%></h5>
+    </div>
+  </div>
+  <div class="col-lg-3 col-lg-offset-1 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-12" style="background:#da532c;margin-top:35px;">
+    <div class="col-lg-4 col-md-3">
+      <i class="fa fa-shopping-cart fa-5x" style="color:#fff;opacity:0.1;padding-top:40px;"></i>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4" style="padding-top:20px;color:#fff;">
+      <h5 style="font-size:16px;">Tax <% @tax.each do |t| %>
+      <%= t.tax %>%
+      <% end %>
+      </h5>
+    </div>
+  </div>
+  <div class="col-lg-3 col-lg-offset-1 col-md-5 col-sm-5 col-xs-12" style="background:#9b59b6;margin-top:35px;">
+    <div class="col-lg-4 col-md-4">
+      <i class="fa fa-envelope fa-5x" style="color:#fff;opacity:0.1;padding-top:40px;"></i>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4" style="padding-top:20px;color:#fff;">
+      <h5 style="font-size:16px;">Emails <%= session[:count_email]%> </h5>
+    </div>
+  </div>
+  <div class="col-lg-3 col-lg-offset-0 col-md-5 col-sm-5 col-sm-offset-2 col-md-offset-2 col-xs-12" style="background:#f1c40f;margin-top:35px;">
+    <div class="col-lg-4 col-md-4">
+      <i class="fa fa-ship  fa-5x" style="color:#fff;opacity:0.1;padding-top:40px;"></i>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4" style="padding-top:20px;color:#fff;">
+      <h5 style="font-size:16px;">No Of orders <%= session[:count_order]%></h5>
+    </div>
+  </div>
+  <div class="col-lg-3 col-lg-offset-1 col-md-5 col-sm-5 col-xs-12" style="background:#ff0097;margin-top:35px;">
+    <div class="col-lg-4 col-md-4">
+      <i class="fa fa-car fa-5x" style="color:#fff;opacity:0.1;padding-top:40px;"></i>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4" style="padding-top:20px;color:#fff;">
+
+      <h5 style="font-size:16px;">Pending orders <%= @pending %></h5>
+    </div>
+  </div>
+    <div class="col-lg-3 col-lg-offset-1 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-12" style="background:#2b5797;margin-top:35px;">
+      <div class="col-lg-4 col-md-4">
+      	<i class="fa fa-user fa-5x" style="color:#fff;opacity:0.1;padding-top:40px;"></i>
+      </div>
+      <div class="col-lg-4 col-lg-offset-4 col-md-3 col-md-offset-4" style="padding-top:20px;color:#fff;">
+        <h5 style="font-size:16px;">Cancel orders <%= @cancel %> </h5>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+.textrs{
+	font-size:20px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.text222{
+	padding-top:5px;
+	font-size: 20px;
+}
+.imgchoti img{
+	height:150px;
+}
+.images{
+	padding-top: 20px;
+}
+.imgbigg img{	
+  height: 350px;
+  width: 350px;
+  margin: 0 auto;
+  border:2px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 5px rgba(203, 203, 238, 0.8);
+}
+.addtocart{
+	padding-top: 5px;
+}
+@media screen and (min-width:250px) and (max-width:768px){
+  .bigg img{
+ 	margin: 0 auto;
+ }
+ .cart{
+ 	text-align: center;
+ }
+ .wish{
+ 	padding-top:10px;
+ 	text-align: center;
+ }
+}

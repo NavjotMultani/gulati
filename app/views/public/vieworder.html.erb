@@ -1,0 +1,72 @@
+<div class="wrapper">
+  <div class="container">
+    <% @total_tax = 0 %>
+      <div class="col-xs-12" style="padding:0px;">
+        <div class="col-sm-3 col-xs-12">
+            <%= render partial: "shared/sidebar" %>
+        </div>
+        <!--left part ends here and right part is start here-->
+          <% @orderdetail.each do |order| %>
+           <div class="col-sm-9 col-xs-12 leftrecent">
+             <div class="col-xs-12 recentorder">
+                RECENT ORDERS
+             </div>
+             <div class="col-xs-12 leftrecent">
+               <div class="col-xs-12 orderid">
+                  <h2><strong>Order : # <%= order.ordermaster_id %></strong></h2>
+                   
+               </div>
+               <div class="col-xs-12 date">
+                    <h5>Order <strong> #<%= order.ordermaster_id %></strong> was placed on <strong> <% @date = order.created_at %><%= @date.strftime('%a, %d %b %Y %H:%M:%S') %></strong> and is currently <strong> <%= session[:status] %></strong>.</h5>
+               </div>
+               <div class="col-xs-12" style="padding-bottom:20px;">
+                    <% @om.each do |om| %>
+                      TOTAL: <i class="fa fa-inr"></i> <%= @total=om.total_cost %>
+                      <% end %>
+               </div>
+               <div class="col-xs-12 itemdes" style="padding:0;">
+                 <div class="col-sm-11" style="padding-bottom:5px;">
+                     <strong> ITEM DESCRIPTION </strong>
+                 </div>
+                 <div class="col-sm-1 col-xs-12 totaltext">
+                  <strong> Total </strong>
+                 </div>
+               </div>    
+               <div class="col-xs-12 de" style="padding:0;">
+                 <div class="col-md-2 col-sm-3 col-xs-12 itemdetail">                    
+                      <%= image_tag("/uploads/"+ order.product.photo1,:class=>'image') %>
+                     <!-- <img src="./images/3.jpg" class="image"> -->
+                 </div>
+                 <div class="col-md-9 col-sm-8 col-xs-12 itemdetail">
+                   <div class="col-xs-12">
+                    <%= order.product.product_name.capitalize %>
+                   </div>
+                   <div class="col-xs-12">
+                    Size : <%= order.product.size %>
+                   </div>
+                   <div class="col-xs-12">
+                     QTY : <%= order.quantity %>
+                   </div>
+                   <div class="col-xs-12">
+                     Color : <%= order.product.color %>
+                   </div>
+                   <div class="col-xs-12">
+                    <strong> Track ID: 11212739424 </strong> 
+                   </div>
+                 </div>
+                 <div class="col-sm-1 col-xs-12 itemdetail price">
+                    <strong> <% @om.each do |om| %>
+                      <i class="fa fa-inr"></i> <%= @total=om.total_cost %>
+                      <% end %>                        
+                    </strong>
+                 </div>
+               </div>
+               <div class="col-xs-12 track">
+                 <button type="button" class="btn btn-secondary btn-block" style="background:#3b5998;color:#fff;">TRACK SHIPMENT</button>
+               </div> 
+               </div>    
+           </div>
+      <% end %>     
+    </div>
+  </div>
+</div>

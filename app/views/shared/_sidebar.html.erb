@@ -1,0 +1,28 @@
+<div class="row" style="padding-top: 12px;">
+          <div class="col-sm-11 col-xs-12 leftsss">
+            <div class="col-xs-12 customm">
+              Custom section
+            </div>
+            <div class="col-xs-12 orderssss">
+              <span class="glyphicon glyphicon-align-justify"> </span><%= link_to(" My orders",{:action=>'orderhistory'}) %>
+            </div>
+            <div class="col-xs-12 orderssss">
+              <span class="glyphicon glyphicon-heart"> </span><%= link_to(" My wishlist",{:action=>'wishlist'}) %>
+            </div>
+            <div class="col-xs-12 orderssss">
+              <span class="glyphicon glyphicon-user"></span> 
+              <% if session[:email] %>
+                <% if @details %>
+                    <%= link_to(" My Account",{:action=>'editpdetail',:id=>@details.id}) %>
+                <% else %>
+                    <%= link_to(" My Account",{:action=>'personaldetails'}) %>
+                <% end %>
+                <% else %>
+                  <%= link_to(" My Account",{:action=>'login'}) %>
+              <% end %>
+            </div>
+            <div class="col-xs-12 orderssss">
+              <span class="glyphicon glyphicon-log-out"></span> Logout
+            </div>
+          </div>
+        </div>

@@ -1,0 +1,263 @@
+.nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav{
+    background-color:#3b5998;
+    text-align:center;
+}
+.nav > span {
+    margin: 0 auto;
+    display:inline-block;
+}
+.nav ul li{
+    width:130px;
+    padding:10px 0px;
+    color:#fff;
+    text-align:center;
+    float:left;
+    /*background: red;*/
+    transition:all 0.80s ease-out 0s;
+}
+.menu{
+    top:15px;
+    position: relative;
+}
+.menu1{
+    display: none;
+    position:absolute;
+    z-index: 1;
+    background:#3b5998;
+}
+.menu1 ul li{
+    margin: 0px;
+    padding:2px 0px;
+    color: #fff;
+    text-align: center;
+}
+.menu ul li h5{
+    font-weight: bold;
+}
+.B{
+    height: 100vh;
+    width: 100%;
+}
+.iframe{
+    position: relative;
+    height:100vh;
+    width: 100%;
+}
+.text{
+    font-family:times new roman;
+    font-style:italic;
+    padding-top:50px;
+}
+.back{
+    position:absolute;
+    height:100%;
+    width:100%;
+    opacity: 0.2;
+    padding-top:30px;
+}
+.back2{
+    position: absolute;
+    height:70%;
+    width:100%;
+    opacity: 0.3;
+}
+    /*padding-top:50px;*/
+/*.imgborder{
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow:1px 2px 4px rgba(0, 0, 0,.1);
+}*/
+.imgborder:hover{
+   border: 2px solid #3b5998;
+  box-shadow:0px 0px 4px #3b5998;
+}
+.boximg{
+    margin: 0 auto;
+    height: 150px;
+    width:200px;
+}
+.family{
+   padding: 0;
+   font-family: times new roman;
+}
+.btn{
+     text-align: center;
+    padding-top: 5px ;
+}
+.master{
+     position:relative;
+}
+.layer1{
+     position:absolute;
+     top:0;
+     left:0;
+     z-index: 20;
+}
+.layer1 img{
+    opacity: 0.2;
+}
+.layer2{
+     position: absolute;  
+     top:-40px;
+     left:0;
+     z-index: 30;
+}
+.newsletter{
+  font-size: 30px;
+}
+.mainheading{
+  padding-top: 25px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.addtext{
+  top: 20px;
+  padding: 8px;
+  font-size: 16px;
+  font-weight:bold;
+  font-family: times new roman;
+}
+@media screen and (min-width:250px) and (max-width:768px){
+   .back3{
+    /*top:-30px;*/
+    width: 100%;
+    height:150%;
+   }
+   .mainheading{
+    text-align: center;
+   }
+   .addtext{
+    padding:7px;
+    text-align: center;
+   }
+   .s{
+    top: 20px;
+   }
+}
+@media screen and (min-width:240px) and (max-width:1500px){
+   .b{
+    padding-top: 10px;
+   }
+}
+@media screen and (min-width:992px) and (max-width:1200px){
+   .menimg{
+    height: 650px;
+   }
+}
+@media screen and (min-width:768px) and (max-width:992px){
+   .menimg{
+    height: 650px;
+   }
+}
+@media screen and (min-width:500px) and (max-width:768px){
+    .menimg{
+        height: 630px;
+    }
+    .limited{
+        padding: 0;
+    }
+    .period h1{
+        padding-left:10px;
+    }
+}
+@media screen and (min-width:250px) and (max-width:500px){
+    .lim{
+        padding: 0;
+        height:610px;
+        width: 350px;
+    }
+    .period h1{
+        margin-left: -15px;
+    }
+}
+@media screen and (min-width:250px) and (max-width:320px){
+    .exmain{
+      margin-left: -18px;
+    }
+}
+@media screen and (min-width:250px) and (max-width:500px){
+    .menimg{
+     display: none;
+    }
+}
+@media screen and (min-width: 250px) and (max-width: 768px){
+    .logo{
+      height:85px;
+      width: 140px;
+    }
+    .social{
+        padding:0;
+        text-align: center;
+    }
+    .so{
+        margin: 2px;
+    }
+}
+@media screen and (min-width: 250px) and (max-width: 350px){
+    .logo{
+        margin: 0 auto;
+    }
+    .search{
+      height:50px;
+      width:400px;
+      margin-left:-100px;
+    }
+}
+@media screen and (min-width:250px) and (max-width:768px){
+    .letter{
+        margin-right:30px;
+    }
+     .nav{
+       display: none;
+    }
+    @media screen and (min-width:250px) and (max-width: 768px){
+     .bar_container{
+      display:block;
+      position: relative;
+      z-index: 2;
+     }
+}
+@media screen and (min-width:250px) and (max-width:470px){
+    .nav{
+        width: 130px;
+        /*margin-left:80px;*/
+    }
+}
+@media screen and (min-width:250px) and (max-width:350px){
+    .nav{
+        width: 120px;
+        margin-left:40px;
+    }
+}
+.bar_container:hover .one
+  {
+    display: none;
+  }
+    .bar_container:hover .two
+{
+  transition:all 2s ease-out ;
+  transform:rotate(40deg);
+  transform-origin:0;
+}
+.bar_container:hover .three
+{
+  transition:all 2s ease-out ;
+  transform:rotate(-35deg);
+}
+.bar_container
+{
+  float: right;
+  cursor: pointer;
+}
+.bar
+{
+  height: 8px;
+  background: #444;
+  width: 40px;
+  margin-top:3px;
+}

@@ -1,0 +1,27 @@
+<div class="row">
+     <div class="col-xs-12 form_box">
+            <%= form_for :userdetail ,:url=>{:action=>"addUser"} do |f|%>
+                
+
+            <%= render partial: "shared/errors", locals: {object: @object} %>
+                <%= render partial: "form", locals: {f: f} %>       
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                         <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+                            <div class="col-lg-4 col-md-2 col-sm-2">
+                                    <h4>Profile Picture</h4>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-6">
+                                    <%= f.file_field("profile_pic") %>
+                                    
+                            </div>
+                        </div> 
+                        <div class="col-lg-1 col-lg-offset-6 col-md-1 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-3">
+                       <%= f.hidden_field("created_by",:value=>session[:user_id]) %>
+                            <%= submit_tag('Save',:class=>'btn btn-primary') %>
+                        <%= render partial: "shared/success", locals: {msg: @msg} %>
+                         
+                        </div>
+                    </div>
+                <%end%>    
+                </div>
+</div>

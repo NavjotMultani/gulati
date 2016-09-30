@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-xs-12" style="padding:0px;">               
+        <div class="col-xs-12 wishlistt">
+          My Orders
+        </div>                  
+        <div class="col-xs-12 main" style="border:1px solid rgba(59,89,152,0.1);padding-bottom:15px;">
+          <div class="col-xs-12 maindetail" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+            <div class="col-sm-2 col-xs-2 headbord">Order</div>
+              <div class="col-md-2 col-sm-3 col-xs-3 headbord">Date</div>
+                <div class="col-sm-2 col-xs-2  headbord">Total</div>
+                  <div class="col-sm-3 col-xs-3  headbord">Status</div>
+                    <div class="col-sm-2  col-xs-2 headbord" >Action</div>
+                  </div>
+                  <% @orderhistory.each do |order| %>
+                  <div class="col-xs-12 maindetail" style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <div class="col-sm-2 col-xs-2 detail"><%= order.id %></div>
+                      <div class="col-md-2 col-sm-3 col-xs-3  detail"><% @date = order.created_at %><%= @date.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+                        <div class="col-xs-2  detail"><i class="fa fa-inr"></i> <%= order.total_cost %></div>
+                          <div class="col-sm-3 col-xs-3 ">
+                            <% @status=order.status %>                         
+                                  <div class="col-sm-3 col-xs-3 <%= apply_color(@status)%>">
+                                        <button class="btn btn-xs"></span><span class="items"><%=  @status %></span></button>
+                                  </div>                                                     
+                          </div>
+                        <div class="col-sm-2 col-xs-2 view">
+                          <%= button_to("View Detail",{ controller:"products", action:"vieworder", id: order.id} ,class:"btn btn-info btn-sm" )%>
+                        </div>
+                      </div>
+                    <% end %>              
+      </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+
+
+<%= f.hidden_field("user_id" ,:class=>'form-control',:value=>session[:user_id]) %>
+                 
+                         <div class="col-xs-12 first">
+                             <div class="col-xs-12" style="margin-top:5px;">Name:</div>
+                             <div class="col-xs-12">
+                                 <%= f.text_field("name",:placeholder=>'Enter Username' ,:class=>'form-control',:required=>true) %>
+                             </div>
+                         </div>
+                         <div class="col-xs-12 last">
+                             <div class="col-xs-12" style="margin-top:5px;">Contact:</div>
+                             <div class="col-xs-12">
+                                 <%= f.text_field("phone",:placeholder=>'Enter Contact Number' ,:class=>'form-control',:required=>true) %>
+                             </div>
+                         </div>
+                               <div class="col-xs-12 last">
+                                    <div class="col-xs-12" style="margin-top:5px;">Pincode:</div>
+                                   <div class="col-xs-12">
+                                        <%= f.text_field("pincode",:placeholder=>'Enter Pincode' ,:class=>'form-control',:required=>true) %>
+                                    </div>
+                               </div>
+                               <div class="col-xs-12 last">
+                                    <div class="col-xs-12" style="margin-top:5px;">Address:</div>
+                                   <div class="col-xs-12">
+                                        <%= f.text_area("address",:placeholder=>'Enter Address' ,:class=>'form-control',:required=>true) %>
+                                    </div>
+                               </div>
+                 <!--left part is ends here-->
+                 
+            

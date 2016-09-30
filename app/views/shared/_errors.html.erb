@@ -1,0 +1,14 @@
+<% if @object && @object.size > 0%>
+	<div class="row col-lg-6 col-lg-offset-4" id="shared_error">
+		<h3 style="color:#ff0000">Following are the errors </h3>
+	<div class="col-lg-6" style="background:#e5e5e5;color:#444;padding:2% 0%;">
+		<p>
+			<%	@object.each do |e|%>
+			<div class="col-lg-12">
+				<%=	e %>
+			</div>
+			<% end %>
+		</p>
+	</div>
+	</div>
+<% end %>

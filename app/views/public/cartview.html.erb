@@ -1,0 +1,5 @@
+<%= form_for :cart,:url=>{:controller=>'public',:action=>'checkout'} do |f| %>
+<%= render partial:'shared/cartview',locals:{object:@cart} %>
+
+
+<% end %>

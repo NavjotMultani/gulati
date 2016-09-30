@@ -1,0 +1,86 @@
+.left{
+  padding:0px 0px;
+  border:1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(203, 203, 238, 0.5);
+}
+.custom{
+  background: #eee;
+  text-align: center;
+  padding-top:10px;
+  padding-bottom:10px;
+  font-size:15px;
+  font-weight: bold;
+}
+.order{
+  color: #3b5998;
+  padding: 5px;
+  text-align: center;
+  transition:all 0.90s ease-out 0s;
+}
+.order:hover{
+  color: #fff;
+  background:#3b5998; 
+}
+.orderno{
+  padding-top:10px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight:bold;
+  text-align: center;
+}
+.ordertext{
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+.ordertext1{
+  padding-top:5px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(0,0,0,0.1);
+}
+.aldetail{
+  font-weight: bold;
+  border-bottom:2px solid rgba(0,0,0,0.1); 
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.img{
+  height:70px;
+  width: 90px;
+}
+.ordetail{
+  border-bottom:1px solid rgba(0,0,0,0.1);
+  padding: 8px 0px;
+}
+.dpqt{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.p{
+  float:right;
+}
+.ordersub{
+  border-bottom:1px solid rgba(0,0,0,0.1);
+  padding: 5px 8px 5px 8px;
+  font-size: 17px;
+}
+.ordersubb{
+  border: none;
+}
+.ad{
+  padding: 0;
+  font-weight:normal;
+}
+@media screen and (min-width:250px) and (max-width:768px){
+.left{
+    margin-top: 15px;
+}
+}
+@media screen and (min-width:250px) and (max-width:600px){
+.main{
+    overflow-x:scroll;
+}
+.fulldetail{
+  width:700px;
+}
+}

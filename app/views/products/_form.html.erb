@@ -1,0 +1,70 @@
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">    
+    <%= f.hidden_field("user_id",:value=>session[:user_id]) %>  
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Select Subcategory</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.select("subcategory_id", @subcategories.collect {|c| [c.sub_category + " for " + c.category.category.partition(" ").first, c.id ] }, { include_blank: "Select Subcategory" },:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Product Name</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("product_name",:placeholder=>'Enter Product Name ' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Product Code</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("product_code",:placeholder=>'Enter Product Code' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Price</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("price",:placeholder=>'Enter Product Price' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Color</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+               <%= f.color_field("color",:class=>'form-control',:required=>'true') %>
+        </div>
+</div> 
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Size</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("size",:placeholder=>'Enter Product Size' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Material</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("material",:placeholder=>'Enter Product Material' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+<div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-9 col-xs-offset-3">
+        <div class="col-lg-4 col-md-2 col-sm-2">
+                <h4>Handling Charges</h4>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+                <%= f.text_field("handling_charges",:placeholder=>'Enter Handling Charges' ,:class=>'form-control',:required=>true) %>
+        </div>
+</div>
+                   
+

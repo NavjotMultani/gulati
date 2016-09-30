@@ -1,0 +1,72 @@
+<style type="text/css">
+.colorrr{
+  width:25px;
+  height:25px;
+  border-radius: 50%;
+}
+</style>
+<script type="text/javascript">
+     $(document).ready(function(){
+      $(".small_thumb").click(function(){
+        src=$(this).attr('src');
+      $("#big_thumb img").fadeOut(500,function(){
+        $(this).attr("src",src).fadeIn(500)
+      })
+      })
+     });
+</script>
+
+      <div class="page-wrapper">
+          <div class="container" style="padding-top:20px;padding-bottom:20px;">
+              <div class="row">
+                  <div class="col-xs-12">
+                    <%= form_for :cart,:url=>{:controller=>'public',:action=>'addCart'} do |f| %>
+                      <%= f.hidden_field("product_id",:value=>@products.id) %>
+                      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 imgbigg" id="big_thumb" style="border:1px solid rgba(0,0,0,0.1);box-shadow: 0 0 5px rgba(203, 203, 238, 0.8);">
+                          <div class="row">
+                            <div class="col-sm-12 col-xs-12 bigg" style="padding-top:50px;padding-bottom:50px;">
+                              <%= image_tag("/uploads/"+ @products.photo1,:class=>'img-responsive') %>
+                               
+                            </div> 
+                        </div>      
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-6">
+                          <div class="row">
+                              <div class="col-lg-12 textrs"> <h3><strong><%= @products.product_name.capitalize %></strong></h3></div>
+                              <div class="col-xs-12 text222"> <h5><strong><i class="fa fa-inr"></i><%= @products.price %></strong></h5></div>
+                              <div class="col-xs-12 text222"> <h5>SIZE:&nbsp;<%= @products.size.capitalize %></h5></div>
+                              <div class="col-xs-12 text222"><h5>COLOR:&nbsp;
+                              </h5><div class="colorrr" style="background:<%= @products.color %>" ></div></div>
+                              <div class="col-xs-12 text222"><h5>QTY:&nbsp;<%= f.number_field("qty",:value=>"1",:min=>"1",:max=>'10') %></h5></div>
+                              <div class="col-lg-12">
+                                <div class="row addtocart">
+                                    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 cart">     
+                                    
+                                         <%if @value=="1"%>                                              
+                                                 <button class="btn btn-success btn-md"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items">Add To Cart</span></button>                                           
+                                                <%else%>                                               
+                                                 <%= submit_tag("Add to Cart ",:class=>'btn btn-success btn-md')  %>                                              
+                                          <% end %> 
+                                        <%end%>
+                                    </div>  
+                                     <div class="col-sm-6 col-xs-12 wish">
+                                      <button class="btn  btn-md"><span class="glyphicon glyphicon glyphicon-heart"></span> <span class="items">Add To Wishlist</span></button> 
+                                    </div>  
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                  <div class="row images">
+                                     <div class="col-lg-4 col-md-5 col-sm-6 col-xs-6 imgchoti">
+                                          <%= image_tag("/uploads/"+ @products.photo1,:class=>'img-responsive small_thumb') %>
+                                     </div>
+                                     <div class="col-lg-4 col-md-5 col-sm-6 col-xs-6 imgchoti">
+                                          <%= image_tag("/uploads/"+ @products.photo2,:class=>'img-responsive small_thumb') %>
+                                     </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>            
+                  </div>
+              </div>
+          </div>
+      </div>

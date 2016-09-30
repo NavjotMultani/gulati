@@ -1,0 +1,82 @@
+<% @total = 0 %>
+    <% if session[:cart_size] == 0 || session[:cart_size] == nil %>
+    
+    <div class="wrapper">
+         <div class="container-fluid">
+             <div class="col-lg-12">
+                    <div class="row" style="border-bottom:1px solid rgba(0, 0, 0, 0.3); font-size:30px; text-align:center;">
+                                <%= render partial: 'shared/success',locals: {msg:@msg} %>
+                    </div>
+                    <div class="row" style="border-bottom:1px solid rgba(0, 0, 0, 0.3); font-size:30px; text-align:center;">
+                                    NO ITEM IN CART
+                    </div>
+                </div>
+            </div>
+     </div>
+
+     
+     <% else %>
+     <div class="wrapper">
+         <div class="container-fluid">
+             <div class="col-lg-12">
+                 <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 leftss">
+                        <div class="row leftss">
+                            <div class="col-lg-5 col-md-6 col-sm-5 col-xs-12 texttt ccd"><a href="/public">CONTINUE SHOPPING</a></div>
+                            <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 texttt ccd y">YOUR CART [<%= session[:cart_size] ? session[:cart_size].to_s + "" : "0" %>]</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 texttt ccd">
+                                                          
+                                <%= link_to("DELIVERY INFO",{:action=>'orderhistory'}) %>
+
+                               </div>
+                        </div>  
+                        <div class="row" style="border-bottom:1px solid rgba(0, 0, 0, 0.3);">
+                            <div class="col-lg-5 col-md-6 col-sm-9 texttt pta">PRODUCTS</div>
+                            <div class="col-lg-5 col-md-4 texttt t"></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 texttt pta">TOTAL AMOUNT</div>
+                        </div>  
+                        <% @cart.each do |p| %>
+                        <div class="row imgwalarow">
+                            <p><div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 img10">
+                                <%= image_tag("/uploads/"+ p.photo1,:class=>'img-responsive') %>
+                            </div></p>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-7 texttt2">
+                                <div class="row imgwalidetail">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <%= p.product_name.humanize %>
+                                    </div>
+                                    <div class="col-xs-12">QTY <%= @qty["#{p.id}"]%></div>
+                                     <div class="col-xs-12"><i class="fa fa-inr"></i> <%= p.price %></div>
+                                    <div class="col-xs-12">SIZE<%= p.size%></div>
+                                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 fa1"style="margin-top:10px;">
+                                        <span>
+                                        <a href=""><i class="glyphicon glyphicon-heart"> SAVE</i></a>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 fa2"style="margin-top:10px;">
+                                        <span>
+                                        <%= link_to({:controller =>'public', :action =>'deleteCart',:id=>p.id}) do %><i class="glyphicon glyphicon-trash"> REMOVE</i>
+                                        <% end %>
+                                        </span>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-0 col-md-3 col-md-offset-1 text3 t" style="margin-top:15px;">
+                                <span class="text3"></span>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-4 pta">
+                                <h4><strong><i class="fa fa-inr"></i> <%= p.price.to_i * @qty["#{p.id}"].to_i %></strong></h4>
+                            </div>
+                        </div>
+                        <% @total += p.price.to_i * @qty["#{p.id}"].to_i %>
+                        <% session[:totalCost] = @total%>
+                        
+                        <% end %>
+                    </div>
+<!-----------------------Left part ends here------------------------------------------>
+                  <%= render partial:'shared/receipt',locals:{object:@total} %>
+                 </div> 
+             </div>
+         </div>
+     </div>
+     <% end %>
